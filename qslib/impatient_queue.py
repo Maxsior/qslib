@@ -1,7 +1,7 @@
-from math import factorial as fac
+from math import factorial
 
 
-def get_prod(i, b, n):
+def _get_prod(i, b, n):
     prod = 1
     for l in range(1, i + 1):
         prod *= (n + l * b)
@@ -19,18 +19,18 @@ def get_p0(ro, b, n, m):
     x1 = 1
     for i in range(1, m + 1):
         x1 *= ro
-        sum1 += x1 / get_prod(i, b, n)
+        sum1 += x1 / _get_prod(i, b, n)
 
     return 1 / (sum0 + sum1 * x0)
 
 
 def get_p_k(k, n, b, ro, p0):
     if k <= n:
-        return p0 * ro ** k / fac(k)
+        return p0 * ro ** k / factorial(k)
     else:
-        pn = ro ** n / fac(n) * p0
+        pn = ro ** n / factorial(n) * p0
         i = k - n
-        return pn * ro ** i / get_prod(i, b, n)
+        return pn * ro ** i / _get_prod(i, b, n)
 
 
 def get_p_fail(m, n, b, ro, p0):
@@ -50,7 +50,7 @@ def get_p_queue(m, n, b, ro, p0):
     pn = get_p_k(n, n, b, ro, p0)
     s = 1
     for i in range(1, m):
-        s += ro ** i / get_prod(i, b, n)
+        s += ro ** i / _get_prod(i, b, n)
 
     return pn * s
 
@@ -71,7 +71,7 @@ def get_n_queue(m, n, b, ro, p0):
     pn = get_p_k(n, n, b, ro, p0)
     s = 0
     for i in range(1, m + 1):
-        s += i * ro ** i / get_prod(i, b, n)
+        s += i * ro ** i / _get_prod(i, b, n)
 
     return pn * s
 

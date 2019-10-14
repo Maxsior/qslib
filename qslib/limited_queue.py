@@ -1,5 +1,6 @@
 from math import factorial
 
+
 def get_p0(n, m, ro):
     s = 1
     x = 1
