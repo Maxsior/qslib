@@ -19,6 +19,7 @@ def get_p0(ro, b, n, m):
     x1 = 1
     for i in range(1, m + 1):
         x1 *= ro
+        print(_get_prod(i, b, n), i)
         sum1 += x1 / _get_prod(i, b, n)
 
     return 1 / (sum0 + sum1 * x0)
@@ -76,7 +77,7 @@ def get_n_queue(m, n, b, ro, p0):
     return pn * s
 
 
-def get_all_metric(n=1, m=0, lamb, mu, v=0):
+def get_all_metric(n, m, lamb, mu, v):
     b = v / mu
     ro = lamb / mu
     p0 = get_p0(ro, b, n, m)
