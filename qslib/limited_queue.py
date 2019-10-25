@@ -10,7 +10,7 @@ def get_p0(n, m, ro):
 
     x2 = x
     for k in range(n+1, n+m+1):
-        x2 *= ro  / n
+        x2 *= ro / n
         s += x2
 
     return 1 / s
@@ -31,7 +31,6 @@ def get_p0_psi(n, m, psi):
         raise ValueError('TODO get_p0_psi, when psi != 1')
 
 
-
 def get_p_fail(n, m, psi, p0):
     return n**n / factorial(n) * psi**(n + m) * p0
 
@@ -41,8 +40,8 @@ def get_n_queue(n, m, psi, p0):
         return (
             n**n / factorial(n) * psi**(n + 1)
             *
-            (1-psi**m * (m + 1 - n * psi)) / (1 - psi)**2
-        )
+            (1 - psi**m * (m + 1 - m * psi)) / (1 - psi)**2
+        ) * p0
     else:
         return n**n / factorial(n) * m * (m + 1) / 2 * p0
 

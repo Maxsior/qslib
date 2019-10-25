@@ -1,9 +1,9 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='qslib',
     version='0.1',
-    packages=['qslib'],
+    packages=find_packages(),
     url='https://github.com/Maxsior/qslib',
     license='MIT',
     author='Maxim Kudryavtsev, Damir Khanov',

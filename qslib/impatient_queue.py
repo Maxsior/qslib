@@ -76,7 +76,7 @@ def get_n_queue(m, n, b, ro, p0):
     return pn * s
 
 
-def get_all_metric(n, m, lamb, mu, v):
+def get_all_metric(n=1, m=0, lamb, mu, v=0):
     b = v / mu
     ro = lamb / mu
     p0 = get_p0(ro, b, n, m)

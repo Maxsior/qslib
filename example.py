@@ -1,5 +1,5 @@
 import qslib.utils
-import qslib.impatient_queue as iq
+import qslib.multi_channel.impatient_queue as iq
 
 if __name__ == '__main__':
     sample = [1, 3, 5, 1, 8, 2, 1]

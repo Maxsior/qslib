@@ -1,0 +1,4 @@
+# Behaviours
+SEPARATELY = 0
+UNANIMOUSLY = 1
+EVENLY = 2
