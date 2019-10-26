@@ -2,8 +2,6 @@ from math import factorial
 
 
 class _ProbabilityProperty:
-    # TODO
-
     def __init__(self, qs):
         self.qs = qs
         self.prob_list = [-1.] * qs.states
@@ -30,7 +28,7 @@ class _ProbabilityProperty:
         if self.prob_list[0] != -1:
             return self.prob_list[0]
 
-        ro = self.qs.intensity_ratio_single
+        ro = self.qs.utilization_ratio
         n = self.qs.channels
         m = self.qs.queue
 
@@ -54,7 +52,7 @@ class _ProbabilityProperty:
             return self.prob_list[k]
 
         p0 = self.get_p0()
-        ro = self.qs.intensity_ratio_single
+        ro = self.qs.utilization_ratio
         n = self.qs.channels
 
         if k <= self.qs.channels:

@@ -10,7 +10,7 @@ import qslib
 # intensity is in person per hour
 market = qslib.QS(input_intensity=50, output_intensity=20, channels=2)
 market.prob['fail']     # probability that the client will leave
-list(market.prob)       # probability of each state
+list(market.prob)       # list of probabilities of each state
 market.number['queue']  # average number of people in the queue
 market.time['queue']    # average queue time
 ```
