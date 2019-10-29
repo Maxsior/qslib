@@ -1,5 +1,4 @@
 class _NumberProperty:
-    # TODO
     def __init__(self, qs):
         self.qs = qs
         self.num_list = dict.fromkeys(['queue', 'system', 'service'])

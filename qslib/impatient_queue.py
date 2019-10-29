@@ -77,6 +77,7 @@ def get_n_queue(m, n, b, ro, p0):
     return pn * s
 
 
+# TODO fix time properties (some)
 def get_all_metric(n, m, lamb, mu, v):
     b = v / mu
     ro = lamb / mu

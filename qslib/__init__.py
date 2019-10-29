@@ -30,9 +30,11 @@ class QS:
         return lamb
 
     def __read_service_rate(self, kwargs):
+
         characteristic = ['service_rate' in kwargs,
                           'holding_time' in kwargs,
                           'holding_time_sample' in kwargs]
+
         if characteristic.count(True) != 1:
             raise KeyError('Output stream characteristic is incorrect. '
                            'Please, pass ONE of this parameters: '
@@ -54,8 +56,29 @@ class QS:
         return mu
 
     def __read_dropout_rate(self, kwargs):
-        self.dropout_rate = kwargs.get('dropout_rate', 0)
-        return self.dropout_rate
+        characteristic = ['dropout_rate' in kwargs,
+                          'mean_time_in_queue' in kwargs,
+                          'time_in_queue_sample' in kwargs]
+
+        if characteristic.count(True) != 1:
+            raise KeyError('Output stream characteristic is incorrect. '
+                           'Please, pass ONE of this parameters: '
+                           'dropout_rate, time_in_queue_sample, '
+                           'time_in_queue_sample')
+        else:
+            if characteristic[0]:
+                v = kwargs['dropout_rate']
+            elif characteristic[1]:
+                # FIXME Should we store this value in TimeProperty?
+                # self._properties['holding_time'] = kwargs['holding_time']
+                v = 1 / kwargs['mean_time_in_queue']
+            else:
+                # FIXME handle this case
+                t_queue = utils.get_mean_t_queue(kwargs['time_in_queue_sample'], 1)
+                v = 1 / t_queue
+
+        self.dropout_rate = v
+        return v
 
     def __init__(self, **kwargs):
         self.closed = kwargs.get('closed', False)

@@ -3,9 +3,8 @@ from math import factorial
 
 def get_p0(n, ro):
     psi = ro / n
-    if psi > 1:
-        # FIXME обработать случай psi > 1
-        raise ValueError("lamb > ro")
+    if psi >= 1:
+        raise ValueError("Infinite queue")
 
     s = 1
     x = 1
@@ -13,14 +12,12 @@ def get_p0(n, ro):
         x *= ro / k
         s += x
 
-    if psi < 1:
-        s += x * ro / (n - ro)
+    s += x * ro / (n - ro)
 
     return 1 / s
 
 
 def get_n_queue(n, ro, p0):
-    # FIXME psi == 1
     return ro ** (n + 1) / factorial(n - 1) / (n - ro) ** 2 * p0
 
 

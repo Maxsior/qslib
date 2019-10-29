@@ -48,3 +48,7 @@ def get_mean_t(data, step):
         return 0
 
     return expected / total
+
+# TODO check calculations of time properties
+def get_mean_time_queue():
+    pass
