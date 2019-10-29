@@ -12,9 +12,19 @@ class _ProbabilityProperty:
         elif type(i) == str:
             if i == 'fail':
                 return self.get_p_k(self.qs.states - 1)
-            else:
-                # TODO add p_queue, p_idle, ...
-                return -1
+            elif i == 'p_queue':
+                if self.qs.queue == 0:
+                    return 0
+                else:
+                    return self.get_p_k(self.qs.channels + 1)
+            elif i == 'p_idle':
+                sum = 0
+                for k in range(self.qs.channels):
+                    sum += self.get_p_k(k)
+                return sum
+            # TODO other probabilities
+        else:
+            raise Exception("Invalid input")
 
     def _get_prod(self, i):
         n = self.qs.channels
